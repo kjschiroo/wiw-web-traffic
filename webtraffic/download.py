@@ -2,7 +2,7 @@ import logging
 import io
 import requests
 import string
-import errors
+from . import errors
 
 
 def _get_file_urls(root_url):
@@ -35,6 +35,7 @@ def download_files_at(root_url, retries=5):
     for file_url in _get_file_urls(root_url):
         logging.info('Downloading {0}'.format(file_url))
         response = _try_request_file(file_url, retries)
+        logging.info('Download complete')
 
         # Convert the response content to StringIO so we can treat it as a file
         # handle without needing to save it.

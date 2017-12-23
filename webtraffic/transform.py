@@ -5,7 +5,7 @@ from functools import reduce
 
 
 def _transform_single_file(iostream):
-    logging.info("Transforming file")
+    logging.info('Transforming file')
     reader = csv.DictReader(iostream)
 
     # Create a nested defaultdict so all users will automatically have zeros
@@ -20,6 +20,7 @@ def _transform_single_file(iostream):
 
 
 def _merge_transformed_data(dataset_1, dataset_2):
+    logging.info('Reducing datasets')
     for user_id, path_times in dataset_2.items():
         for path, time in path_times.items():
             dataset_1[user_id][path] += time

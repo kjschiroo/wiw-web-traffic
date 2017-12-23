@@ -13,9 +13,8 @@ Options:
 import logging
 import csv
 from docopt import docopt
-import download
-import transform
-from pprint import pprint
+from . import download
+from . import transform
 
 
 def _write_csv(dataset, output):
