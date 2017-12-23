@@ -6,7 +6,7 @@ Usage:
 
 Options:
     -v, --verbose               Generate verbose output
-    --baseurl=<web_log_url>     The base url for input csv dataset
+    --root_url=<web_log_url>    The root url for input csv dataset
     output_path                 The file to write results to
     -h, --help                  Print out this help text
 """
@@ -26,6 +26,7 @@ def _write_csv(dataset, output):
     fieldnames.sort(reverse=True)
     dataset.sort(key=lambda row: row['user_id'])
     with open(output, 'w') as f:
+        logging.info('Writing output to {0}'.format(output))
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(dataset)
