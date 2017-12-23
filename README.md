@@ -41,3 +41,7 @@ INFO:root:Transforming file
 INFO:root:Reducing datasets
 INFO:root:Writing output to result.csv
 ```
+
+## Assumptions ##
+- If there are multiple entries for a user_id path pair, then their lengths should be summed.
+- The files under the root url will always be named `a.csv` through `z.csv`. Any other files should not be considered.
