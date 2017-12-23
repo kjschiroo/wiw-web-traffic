@@ -47,6 +47,9 @@ def _convert_to_standard_datastructs(dataset):
 
 
 def transform(iostreams):
+    '''
+    Convert each file into the path headers format and merge them together.
+    '''
     converted_files = map(_transform_single_file, iostreams)
     reduced_data_set = reduce(_merge_transformed_data, converted_files)
     return _convert_to_standard_datastructs(reduced_data_set)

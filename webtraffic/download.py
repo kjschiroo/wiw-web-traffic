@@ -13,10 +13,10 @@ def _get_file_urls(root_url):
     ]
 
 
-def _try_request_file(file_url, retries):
+def _try_request_file(file_url, session, retries):
     for i in range(retries):
         try:
-            response = requests.get(file_url)
+            response = session.get(file_url, timeout=5)
             break
         except requests.exceptions.ConnectionError:
             logging.info(
@@ -32,9 +32,10 @@ def download_files_at(root_url, retries=5):
     Download all expected files at the root_url and return an iterator of io
     streams
     '''
+    session = requests.Session()
     for file_url in _get_file_urls(root_url):
         logging.info('Downloading {0}'.format(file_url))
-        response = _try_request_file(file_url, retries)
+        response = _try_request_file(file_url, session, retries)
         logging.info('Download complete')
 
         # Convert the response content to StringIO so we can treat it as a file
