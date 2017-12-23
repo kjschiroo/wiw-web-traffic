@@ -1,7 +1,7 @@
 # Web traffic transform #
 ## Install ##
 ```
-git clone git@github.com:kjschiroo/wiw-web-traffic.git;
+git clone https://github.com/kjschiroo/wiw-web-traffic.git;
 cd wiw-web-traffic;
 python3 setup.py install;
 ```
